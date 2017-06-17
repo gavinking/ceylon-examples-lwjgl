@@ -38,11 +38,22 @@ To run the examples, type:
 To assemble a "fat" jar containing the sample and all its
 dependencies, type:
 
-    ceylon fat-jar eg.lwjgl
+    ./ceylonb fat-jar eg.lwjgl
     
 To run the resulting jar, type:
 
     java -XstartOnFirstThread -jar eg.lwjgl-1.0.0.jar
+
+## Packaging a Ceylon assembly archive
+
+To package the example module as a `.cas` assembly archive, 
+type:
+
+    ./ceylonb assemble joggly
+
+To run the resulting archive, type:
+
+    ./ceylonb run -a joggly-1.0.0.cas
 
 ## Known issues
 

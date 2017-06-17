@@ -1,4 +1,5 @@
 .idea/libraries
 .idea/workspace.xml
-eg.*-1.0.0.jar
+eg.*-*.jar
+eg.*-*.cas
 modules
