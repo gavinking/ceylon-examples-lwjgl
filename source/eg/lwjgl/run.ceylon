@@ -68,8 +68,8 @@ void init() {
         glfwGetWindowSize(window, pWidth, pHeight);
         value vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
         glfwSetWindowPos(window,
-            (vidmode.width() -pWidth.get(0)) / 2,
-            (vidmode.height() -pHeight.get(0)) / 2);
+            (vidmode.width() - pWidth.get(0)) / 2,
+            (vidmode.height() - pHeight.get(0)) / 2);
     }
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1);

@@ -6,7 +6,10 @@ import cuchaz.jfxgl {
 
 import java.lang {
     ObjectArray,
-    Str=String
+    Str=String,
+    IllegalStateException,
+    RuntimeException,
+    System
 }
 
 import javafx.application {
@@ -27,13 +30,16 @@ import javafx.stage {
 
 import org.lwjgl.glfw {
     GLFW,
-    Callbacks
+    Callbacks,
+    GLFWErrorCallback
 }
 import org.lwjgl.opengl {
     GL
 }
 import org.lwjgl.system {
-    MemoryUtil
+    MemoryUtil {
+        nil=null
+    }
 }
 
 shared void run() {
@@ -58,34 +64,41 @@ shared class Main {
     }
 
     shared static void jfxglmain(ObjectArray<Str> args) {
+        GLFWErrorCallback.createPrint(System.err).set();
+
         // create a window using GLFW
-        GLFW.glfwInit();
-        value hwnd
-                = GLFW.glfwCreateWindow(300, 169, "JFXGL",
-                        MemoryUtil.null, MemoryUtil.null);
+        if (!GLFW.glfwInit()) {
+            throw IllegalStateException("Unable to initialize GLFW");
+        }
+
+        value window
+                = GLFW.glfwCreateWindow(300, 169, "JFXGL", nil, nil);
+        if (window == nil) {
+            throw RuntimeException("Failed to create the GLFW window");
+        }
 
         // init OpenGL
-        GLFW.glfwMakeContextCurrent(hwnd);
+        GLFW.glfwMakeContextCurrent(window);
         GL.createCapabilities();
 
         try {
             // start the JavaFX app
-            JFXGL.start(hwnd, args, HelloWorldApp());
+            JFXGL.start(window, args, HelloWorldApp());
 
             // render loop
-            while (!GLFW.glfwWindowShouldClose(hwnd)) {
+            while (!GLFW.glfwWindowShouldClose(window)) {
                 // render the JavaFX UI
                 JFXGL.render();
 
-                GLFW.glfwSwapBuffers(hwnd);
+                GLFW.glfwSwapBuffers(window);
                 GLFW.glfwPollEvents();
             }
         }
         finally {
             // cleanup
             JFXGL.terminate();
-            Callbacks.glfwFreeCallbacks(hwnd);
-            GLFW.glfwDestroyWindow(hwnd);
+            Callbacks.glfwFreeCallbacks(window);
+            GLFW.glfwDestroyWindow(window);
             GLFW.glfwTerminate();
         }
     }
