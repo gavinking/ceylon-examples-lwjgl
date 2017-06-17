@@ -46,5 +46,6 @@ LWJGL native libraries (`.dll`, `.so`, or `.dylib`).
 
 ## Known issues
 
-The JFXGL sample currently crashes on MacOS, due to the GLSL 
-version used by JFXGL.
+The JFXGL sample currently crashes on Mac, due to JFXGL 
+requiring OpenGL 3 with support for compat profiles, which 
+is not available in MacOS.
