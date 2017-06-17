@@ -12,30 +12,39 @@ of [JFXGL][] which allows you to use JavaFX from within LWJGL.
 
 The following software must be installed:
 
-- Java 8
-- [Ceylon][] 1.3.3 command line tools
+- Java 8 or above
 - [LWJGL][] native libraries: `liblwjgl.*`, `libglfw.*`, and 
   `liblwjgl_opengl.*` for your operating system
   (`.dll`, `.so`, or `.dylib`)
 
-Note, the LWJGL native libraries come packaged in `.jar` 
-files. Extract the libraries from the `.jar`s and place them
-in a `natives` directory.
+The LWJGL native libraries come packaged in `.jar` files. 
+Extract the libraries from the `.jar`s and place them in a 
+`natives` directory.
 
 To play with the samples from within IntelliJ, you'll also
-need to install Ceylon IDE for IntelliJ.
+need to install Ceylon IDE for IntelliJ 1.3.2.
+
+The Ceylon 1.3.2 command line tools are not required, since
+the `ceylonb` command is self-installing. However, if you do
+already have them installed, you can type `ceylon` instead 
+of `./ceylonb` at the command line.
 
 ## Compiling and running
 
 To compile the examples, type:
 
-    ceylon compile
+    ./ceylonb compile
 
 To run the examples, type:
 
     export JAVA_OPTS="-XstartOnFirstThread -Dorg.lwjgl.librarypath=natives"
-    ceylon run eg.lwjgl
-    ceylon run eg.jfxgl
+    ./ceylonb run eg.lwjgl
+    ./ceylonb run eg.jfxgl
 
 Where `natives` is the path to a directory containing the 
 LWJGL native libraries (`.dll`, `.so`, or `.dylib`).
+
+## Known issues
+
+The JFXGL sample currently crashes on MacOS, due to the GLSL 
+version used by JFXGL.
