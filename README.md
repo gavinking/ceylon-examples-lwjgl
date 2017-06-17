@@ -49,11 +49,11 @@ To run the resulting jar, type:
 To package the example module as a `.cas` assembly archive, 
 type:
 
-    ./ceylonb assemble joggly
+    ./ceylonb assemble eg.lwjgl
 
 To run the resulting archive, type:
 
-    ./ceylonb run -a joggly-1.0.0.cas
+    ./ceylonb run -a eg.lwjgl-1.0.0.cas
 
 ## Known issues
 
