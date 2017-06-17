@@ -12,19 +12,11 @@ of [JFXGL][] which allows you to use JavaFX from within LWJGL.
 
 The following software must be installed:
 
-- Java 8 or above
-- [LWJGL][] native libraries: `liblwjgl.*`, `libglfw.*`, and 
-  `liblwjgl_opengl.*` for your operating system
-  (`.dll`, `.so`, or `.dylib`)
+- To compile and run the samples: Java 8 or above
+- To play with the samples from within IntelliJ: 
+  Ceylon IDE for IntelliJ 1.3.3.
 
-The LWJGL native libraries come packaged in `.jar` files. 
-Extract the libraries from the `.jar`s and place them in a 
-`natives` directory.
-
-To play with the samples from within IntelliJ, you'll also
-need to install Ceylon IDE for IntelliJ 1.3.2.
-
-The Ceylon 1.3.2 command line tools are not required, since
+The Ceylon 1.3.3 command line tools are not required, since
 the `ceylonb` command is self-installing. However, if you do
 already have them installed, you can type `ceylon` instead 
 of `./ceylonb` at the command line.
@@ -37,12 +29,20 @@ To compile the examples, type:
 
 To run the examples, type:
 
-    export JAVA_OPTS="-XstartOnFirstThread -Dorg.lwjgl.librarypath=natives"
+    export JAVA_OPTS=-XstartOnFirstThread
     ./ceylonb run eg.lwjgl
     ./ceylonb run eg.jfxgl
 
-Where `natives` is the path to a directory containing the 
-LWJGL native libraries (`.dll`, `.so`, or `.dylib`).
+## Assembling a fat jar
+
+To assemble a "fat" jar containing the sample and all its
+dependencies, type:
+
+    ceylon fat-jar eg.lwjgl
+    
+To run the resulting jar, type:
+
+    java -XstartOnFirstThread -jar eg.lwjgl-1.0.0.jar
 
 ## Known issues
 

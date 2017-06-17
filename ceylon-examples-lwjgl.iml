@@ -26,6 +26,15 @@
     <orderEntry type="library" scope="PROVIDED" name="Ceylon: cuchaz:jfxgl-jfxrt/0.4-SNAPSHOT" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Ceylon: org.lwjgl:lwjgl/3.1.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Ceylon: org.lwjgl:lwjgl-glfw/3.1.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Ceylon: org.lwjgl:lwjgl-glfw:natives-linux/3.1.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Ceylon: org.lwjgl:lwjgl-glfw:natives-macos/3.1.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Ceylon: org.lwjgl:lwjgl-glfw:natives-windows/3.1.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Ceylon: org.lwjgl:lwjgl-opengl/3.1.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Ceylon: org.lwjgl:lwjgl-opengl:natives-linux/3.1.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Ceylon: org.lwjgl:lwjgl-opengl:natives-macos/3.1.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Ceylon: org.lwjgl:lwjgl-opengl:natives-windows/3.1.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Ceylon: org.lwjgl:lwjgl:natives-linux/3.1.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Ceylon: org.lwjgl:lwjgl:natives-macos/3.1.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Ceylon: org.lwjgl:lwjgl:natives-windows/3.1.2" level="project" />
   </component>
 </module>
