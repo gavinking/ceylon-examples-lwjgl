@@ -1,0 +1,13 @@
+
+[compiler]
+source=source
+resource=resource
+
+[defaults]
+offline=false
+flatclasspath=true
+autoexportmavendependencies=true
+fullyexportmavendependencies=false
+
+[repositories]
+remote=maven:settings.xml

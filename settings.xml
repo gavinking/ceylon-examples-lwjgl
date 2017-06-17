@@ -1,0 +1,25 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                              https://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <profiles>
+        <profile>
+            <id>myprofile</id>
+            <repositories>
+                <!--repository>
+                    <id>herd</id>
+                    <name>Herd Maven repo</name>
+                    <url>https://herd.ceylon-lang.org/maven/1/</url>
+                </repository-->
+                <repository>
+                    <id>chuchaz</id>
+                    <name>Chuchaz repo</name>
+                    <url>http://maven.cuchazinteractive.com</url>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>myprofile</activeProfile>
+    </activeProfiles>
+</settings>
