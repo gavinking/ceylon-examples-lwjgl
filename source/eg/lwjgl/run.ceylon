@@ -34,7 +34,7 @@ import org.lwjgl.system {
 variable Integer window = 0;
 
 shared void run() {
-    print("Hello LWJGL " + Version.version + "!");
+    print("Hello LWJGL ``Version.version``!");
     init();
     loop();
     glfwFreeCallbacks(window);
