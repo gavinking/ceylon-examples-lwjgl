@@ -6,7 +6,7 @@ resource=resource
 [defaults]
 offline=false
 flatclasspath=true
-autoexportmavendependencies=true
+autoexportmavendependencies=false
 fullyexportmavendependencies=false
 
 [repositories]
