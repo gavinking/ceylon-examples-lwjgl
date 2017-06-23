@@ -54,9 +54,3 @@ type:
 To run the resulting archive, type:
 
     ./ceylonb run -a eg.lwjgl-1.0.0.cas
-
-## Known issues
-
-The JFXGL sample currently crashes on Mac, due to JFXGL 
-requiring OpenGL 3 with support for compat profiles, which 
-is not available in MacOS.

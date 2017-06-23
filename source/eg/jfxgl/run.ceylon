@@ -1,6 +1,8 @@
 import cuchaz.jfxgl {
     JFXGLLauncher,
-    JFXGL,
+    JFXGL {
+        ...
+    },
     calledByEventsThread
 }
 
@@ -29,12 +31,18 @@ import javafx.stage {
 }
 
 import org.lwjgl.glfw {
-    GLFW,
-    Callbacks,
+    GLFW {
+        ...
+    },
+    Callbacks {
+        glfwFreeCallbacks
+    },
     GLFWErrorCallback
 }
 import org.lwjgl.opengl {
-    GL
+    GL {
+        createCapabilities
+    }
 }
 import org.lwjgl.system {
     MemoryUtil {
@@ -42,12 +50,7 @@ import org.lwjgl.system {
     }
 }
 
-shared void run() {
-//    System.setProperty(
-//            Configuration.libraryPath.property,
-//            "natives");
-    JFXGLLauncher.launchMain(`Main`, null);
-}
+shared void run() => JFXGLLauncher.launchMain(`Main`, null);
 
 shared class Main {
 
@@ -67,39 +70,46 @@ shared class Main {
         GLFWErrorCallback.createPrint(System.err).set();
 
         // create a window using GLFW
-        if (!GLFW.glfwInit()) {
+        if (!glfwInit()) {
             throw IllegalStateException("Unable to initialize GLFW");
         }
 
-        value window
-                = GLFW.glfwCreateWindow(300, 169, "JFXGL", nil, nil);
+
+        if (operatingSystem.name=="mac") {
+            glfwWindowHint(glfwContextVersionMajor, 3);
+            glfwWindowHint(glfwContextVersionMinor, 2);
+            glfwWindowHint(glfwOpenglForwardCompat, glfwTrue);
+            glfwWindowHint(glfwOpenglProfile, glfwOpenglCoreProfile);
+        }
+
+        value window = glfwCreateWindow(300, 169, "JFXGL", nil, nil);
         if (window == nil) {
             throw RuntimeException("Failed to create the GLFW window");
         }
 
         // init OpenGL
-        GLFW.glfwMakeContextCurrent(window);
-        GL.createCapabilities();
+        glfwMakeContextCurrent(window);
+        createCapabilities();
 
         try {
             // start the JavaFX app
-            JFXGL.start(window, args, HelloWorldApp());
+            start(window, args, HelloWorldApp());
 
             // render loop
-            while (!GLFW.glfwWindowShouldClose(window)) {
+            while (!glfwWindowShouldClose(window)) {
                 // render the JavaFX UI
-                JFXGL.render();
+                render();
 
-                GLFW.glfwSwapBuffers(window);
-                GLFW.glfwPollEvents();
+                glfwSwapBuffers(window);
+                glfwPollEvents();
             }
         }
         finally {
             // cleanup
-            JFXGL.terminate();
-            Callbacks.glfwFreeCallbacks(window);
-            GLFW.glfwDestroyWindow(window);
-            GLFW.glfwTerminate();
+            terminate();
+            glfwFreeCallbacks(window);
+            glfwDestroyWindow(window);
+            glfwTerminate();
         }
     }
 
