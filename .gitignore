@@ -3,3 +3,5 @@
 eg.*-*.jar
 eg.*-*.cas
 modules
+*config~
+.DS_Store
